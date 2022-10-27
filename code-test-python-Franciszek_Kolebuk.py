@@ -3,7 +3,7 @@ import csv
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def NewData():
+def NewData():  #this method is needed for task 1. It creates a new file "newData.csv" which has added comlumns "state" and "postal"
     data=[]
     with open("event_data.csv","r", newline="") as csvfile:
         csvReader = csv.DictReader(csvfile, delimiter=",")
@@ -34,7 +34,7 @@ def NewData():
 
 #NewData()
 
-def SumChart():
+def SumChart():  #this method creates and shows bar chart needed for task 2. It shows distribution of events across states.
     df = pd.read_csv("newData.csv")
 
     gr1 = df.groupby('state').count().reset_index()
@@ -50,7 +50,7 @@ def SumChart():
 
 #SumChart()    
 
-def ValueChart():
+def ValueChart():   #this method creates and shows bar chart needed for task 3. It shows sum value of events across states in hundrets of thousands cents (USD).
     df = pd.read_csv("newData.csv")
 
     gr2 = df.groupby('state').sum("eventValue").reset_index()
